@@ -1,0 +1,35 @@
+ersion: '3.3'
+
+services:
+  wekandb:
+    image: mongo:6.0
+    container_name: wekandb
+    restart: always
+    volumes:
+      - wekandb-data:/data/db
+    networks:
+      - wekan-net
+
+  wekan:
+    image: wekanteam/wekan
+    container_name: wekan
+    restart: always
+    depends_on:
+      - wekandb
+    environment:
+      - MONGO_URL=mongodb://wekandb:27017/wekan
+      - ROOT_URL=http://localhost:8080
+      - PORT=8080
+      - ADMIN_USER=admin
+      - ADMIN_PASS=admin123
+      - ADMIN_EMAIL=masihgurutkj@gmail.com
+    ports:
+      - "8080:8080"
+    networks:
+      - wekan-net
+
+volumes:
+  wekandb-data:
+
+networks:
+  wekan-net:

@@ -3,8 +3,8 @@ Project Collaboration Tool Like Kanban/Trello
 
 ## Download 
 ````
-git clone https://github.com/otn4mrehus/wekan.git
-cd wekan
+git clone https://github.com/otn4mrehus/wekan_docker.git
+cd wekan_docker
 ````
 
 ## Run Containers
